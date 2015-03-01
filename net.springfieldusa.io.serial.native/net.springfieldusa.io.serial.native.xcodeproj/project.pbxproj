@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		068C74F21AA236C9001F34F5 /* net_springfieldusa_io_serial_IOStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 068C74F11AA236C9001F34F5 /* net_springfieldusa_io_serial_IOStream.h */; };
+		068C74F41AA236D9001F34F5 /* IOStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 068C74F31AA236D9001F34F5 /* IOStream.h */; };
+		068C74F61AA236E9001F34F5 /* IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 068C74F51AA236E9001F34F5 /* IOStream.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		068C74E91AA2350C001F34F5 /* libnet.springfieldusa.io.native.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libnet.springfieldusa.io.native.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		068C74F11AA236C9001F34F5 /* net_springfieldusa_io_serial_IOStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net_springfieldusa_io_serial_IOStream.h; sourceTree = "<group>"; };
+		068C74F31AA236D9001F34F5 /* IOStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOStream.h; sourceTree = "<group>"; };
+		068C74F51AA236E9001F34F5 /* IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOStream.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		068C74E61AA2350C001F34F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		068C74E01AA2350C001F34F5 = {
+			isa = PBXGroup;
+			children = (
+				068C74F01AA236A2001F34F5 /* Source */,
+				068C74EA1AA2350C001F34F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		068C74EA1AA2350C001F34F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				068C74E91AA2350C001F34F5 /* libnet.springfieldusa.io.native.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		068C74F01AA236A2001F34F5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				068C74F51AA236E9001F34F5 /* IOStream.cpp */,
+				068C74F31AA236D9001F34F5 /* IOStream.h */,
+				068C74F11AA236C9001F34F5 /* net_springfieldusa_io_serial_IOStream.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		068C74E71AA2350C001F34F5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				068C74F41AA236D9001F34F5 /* IOStream.h in Headers */,
+				068C74F21AA236C9001F34F5 /* net_springfieldusa_io_serial_IOStream.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		068C74E81AA2350C001F34F5 /* net.springfieldusa.io.native */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 068C74ED1AA2350C001F34F5 /* Build configuration list for PBXNativeTarget "net.springfieldusa.io.native" */;
+			buildPhases = (
+				068C74E51AA2350C001F34F5 /* Sources */,
+				068C74E61AA2350C001F34F5 /* Frameworks */,
+				068C74E71AA2350C001F34F5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = net.springfieldusa.io.native;
+			productName = io.native;
+			productReference = 068C74E91AA2350C001F34F5 /* libnet.springfieldusa.io.native.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		068C74E11AA2350C001F34F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Bryan Hunt";
+				TargetAttributes = {
+					068C74E81AA2350C001F34F5 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 068C74E41AA2350C001F34F5 /* Build configuration list for PBXProject "net.springfieldusa.io.native" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 068C74E01AA2350C001F34F5;
+			productRefGroup = 068C74EA1AA2350C001F34F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				068C74E81AA2350C001F34F5 /* net.springfieldusa.io.native */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		068C74E51AA2350C001F34F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				068C74F61AA236E9001F34F5 /* IOStream.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		068C74EB1AA2350C001F34F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		068C74EC1AA2350C001F34F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		068C74EE1AA2350C001F34F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/include/darwin,
+				);
+				INSTALL_PATH = /Users/bhunt/Documents/Code/Workspaces/Ham/net.springfieldusa.io.serial/lib/osx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		068C74EF1AA2350C001F34F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/include,
+					/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/include/darwin,
+				);
+				INSTALL_PATH = /Users/bhunt/Documents/Code/Workspaces/Ham/net.springfieldusa.io.serial/lib/osx;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		068C74E41AA2350C001F34F5 /* Build configuration list for PBXProject "net.springfieldusa.io.native" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				068C74EB1AA2350C001F34F5 /* Debug */,
+				068C74EC1AA2350C001F34F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		068C74ED1AA2350C001F34F5 /* Build configuration list for PBXNativeTarget "net.springfieldusa.io.native" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				068C74EE1AA2350C001F34F5 /* Debug */,
+				068C74EF1AA2350C001F34F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 068C74E11AA2350C001F34F5 /* Project object */;
+}
