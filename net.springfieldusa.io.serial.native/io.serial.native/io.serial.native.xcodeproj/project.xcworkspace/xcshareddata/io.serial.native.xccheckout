@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8497FADD-7EBB-4804-9816-6185C9B5D29F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>io.serial.native</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1CEAAE93AE58F797B677FF4DA956AB15398D973D</key>
+		<string>https://github.com/BryanHunt/java-serial-port.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>net.springfieldusa.io.serial.native/io.serial.native/io.serial.native.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1CEAAE93AE58F797B677FF4DA956AB15398D973D</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/BryanHunt/java-serial-port.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1CEAAE93AE58F797B677FF4DA956AB15398D973D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1CEAAE93AE58F797B677FF4DA956AB15398D973D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>java-serial-port</string>
+		</dict>
+	</array>
+</dict>
+</plist>

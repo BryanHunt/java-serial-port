@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "068C74E81AA2350C001F34F5"
-               BuildableName = "libnet.springfieldusa.io.native.dylib"
-               BlueprintName = "net.springfieldusa.io.native"
-               ReferencedContainer = "container:net.springfieldusa.io.native.xcodeproj">
+               BlueprintIdentifier = "065423291AA694EC007696FE"
+               BuildableName = "libio.serial.native.dylib"
+               BlueprintName = "io.serial.native"
+               ReferencedContainer = "container:io.serial.native.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,10 +42,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "068C74E81AA2350C001F34F5"
-            BuildableName = "libnet.springfieldusa.io.native.dylib"
-            BlueprintName = "net.springfieldusa.io.native"
-            ReferencedContainer = "container:net.springfieldusa.io.native.xcodeproj">
+            BlueprintIdentifier = "065423291AA694EC007696FE"
+            BuildableName = "libio.serial.native.dylib"
+            BlueprintName = "io.serial.native"
+            ReferencedContainer = "container:io.serial.native.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "068C74E81AA2350C001F34F5"
-            BuildableName = "libnet.springfieldusa.io.native.dylib"
-            BlueprintName = "net.springfieldusa.io.native"
-            ReferencedContainer = "container:net.springfieldusa.io.native.xcodeproj">
+            BlueprintIdentifier = "065423291AA694EC007696FE"
+            BuildableName = "libio.serial.native.dylib"
+            BlueprintName = "io.serial.native"
+            ReferencedContainer = "container:io.serial.native.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

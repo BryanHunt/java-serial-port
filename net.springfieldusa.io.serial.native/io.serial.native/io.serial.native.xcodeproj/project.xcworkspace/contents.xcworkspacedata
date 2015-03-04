@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:net.springfieldusa.io.native.xcodeproj">
+      location = "self:io.serial.native.xcodeproj">
    </FileRef>
 </Workspace>

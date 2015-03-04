@@ -5,58 +5,31 @@ import java.io.IOException;
 
 public class IOStream implements Closeable
 {
-	public static int B115200;
-	public static int B9600;
 	private long stream = 0;
 
 	static
 	{
-		System.loadLibrary("net.springfieldusa.io.native");
-
-		// TODO: make the modes enums
-		B115200 = IOStream.B115200();
-		B9600 = IOStream.B9600();
+		System.loadLibrary("io.serial.native");
 	}
 
 	public static void main(String[] args) throws InterruptedException
 	{
-		byte[] magic = new byte[] {0x50, (byte) 0xbb, (byte) 0xff, 0x20, 0x12, 0x07, 0x25};
-		
 		try (IOStream stream = new IOStream("/dev/tty.usbserial"))
 		{
-			stream.setBaud(B9600);
-			stream.write(magic);
+			stream.setBaud(BaudRate.B115200);
+			stream.setParity(Parity.NONE);
+			stream.setDataBits(DataBits.EIGHT);
+			stream.setStopBits(StopBits.ONE);
+			stream.setUseFlowControl(FlowControl.NO);
 			
+			byte[] out = new String("\n").getBytes();
+			stream.write(out);
+
 			Thread.sleep(100);
 			byte[] in = new byte[1024];
-			int count = stream.read(in);
+			stream.read(in);
 			
-			System.out.println("Read " + count + " bytes");
-			
-			for(int i = 0; i < count; i++)
-				System.out.printf("%x ", in[i]);
-			
-			System.out.println();
-			
-			byte[] out = new byte[] {0x02};
-			stream.write(out);
-			
-			System.out.println("Read " + count + " bytes");
-			
-			for(int i = 0; i < count; i++)
-				System.out.printf("%x ", in[i]);
-			
-			System.out.println();
-
-			out = new byte[] {0x06};
-			stream.write(out);
-			
-			System.out.println("Read " + count + " bytes");
-			
-			for(int i = 0; i < count; i++)
-				System.out.printf("%x ", in[i]);
-			
-			System.out.println();
+			System.out.println(new String(in));			
 		}
 		catch (IOException e)
 		{
@@ -74,17 +47,13 @@ public class IOStream implements Closeable
 
 	public int read(byte[] buffer) throws IOException
 	{
-		if (stream == 0)
-			throw new IOException("The stream is not open");
-
+		checkStream();
 		return read(stream, buffer);
 	}
 
 	public int write(byte[] buffer) throws IOException
 	{
-		if (stream == 0)
-			throw new IOException("The stream is not open");
-
+		checkStream();
 		return write(stream, buffer);
 	}
 
@@ -102,22 +71,48 @@ public class IOStream implements Closeable
 		}
 	}
 
-	public void setBaud(int baud) throws IOException
+	public void setBaud(BaudRate baudRate) throws IOException
 	{
-		if (stream == 0)
-			throw new IOException("The stream is not open");
-
-		setBaud(stream, baud);
+		checkStream();
+		setBaud(stream, baudRate.getNativeValue());
 	}
 
-	public int getStatus()
+	public void setParity(Parity parity) throws IOException
 	{
+		checkStream();
+		setParity(stream, parity.getParity());
+	}
+	
+	public void setDataBits(DataBits dataBits) throws IOException
+	{
+		checkStream();
+		setDataBits(stream, dataBits.getValue());
+	}
+	
+	public void setStopBits(StopBits stopBits) throws IOException
+	{
+		checkStream();
+		setStopBits(stream, stopBits.getNumberBits());
+	}
+	
+	public void setUseFlowControl(FlowControl mode) throws IOException
+	{
+		checkStream();
+		setUseFlowControl(stream, mode.getFlowControl());
+	}
+
+	public int getStatus() throws IOException
+	{
+		checkStream();
 		return getStatus(stream);
 	}
 	
-	public static native int B115200();
-	public static native int B9600();
-
+	private void checkStream() throws IOException
+	{
+		if (stream == 0)
+			throw new IOException("The stream is not open");		
+	}
+	
 	private native long open(String deviceName) throws IOException;
 
 	private native int read(long stream, byte[] buffer) throws IOException;
@@ -126,7 +121,15 @@ public class IOStream implements Closeable
 
 	private native void close(long stream) throws IOException;
 
-	private native void setBaud(long stream, int baud);
+	private native void setBaud(long stream, int baudRate);
+	
+	private native void setParity(long stream, int parity);
+	
+	private native void setDataBits(long stream, int numberDataBits);
+	
+	private native void setStopBits(long stream, int numberStopBits);
+	
+	private native void setUseFlowControl(long stream, boolean mode);
 	
 	private native int getStatus(long stream);
 }

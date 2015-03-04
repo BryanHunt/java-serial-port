@@ -9,22 +9,6 @@ extern "C" {
 #endif
 /*
  * Class:     net_springfieldusa_io_serial_IOStream
- * Method:    B115200
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_net_springfieldusa_io_serial_IOStream_B115200
-  (JNIEnv *, jclass);
-
-/*
- * Class:     net_springfieldusa_io_serial_IOStream
- * Method:    B9600
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_net_springfieldusa_io_serial_IOStream_B9600
-  (JNIEnv *, jclass);
-
-/*
- * Class:     net_springfieldusa_io_serial_IOStream
  * Method:    open
  * Signature: (Ljava/lang/String;)J
  */
@@ -62,6 +46,38 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_close
  */
 JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setBaud
   (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    setParity
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setParity
+  (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    setDataBits
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setDataBits
+  (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    setStopBits
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setStopBits
+  (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    setUseFlowControl
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setUseFlowControl
+  (JNIEnv *, jobject, jlong, jboolean);
 
 /*
  * Class:     net_springfieldusa_io_serial_IOStream
