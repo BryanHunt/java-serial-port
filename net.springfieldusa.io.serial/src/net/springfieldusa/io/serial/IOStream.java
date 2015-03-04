@@ -12,32 +12,6 @@ public class IOStream implements Closeable
 		System.loadLibrary("io.serial.native");
 	}
 
-	public static void main(String[] args) throws InterruptedException
-	{
-		try (IOStream stream = new IOStream("/dev/tty.usbserial"))
-		{
-			stream.setBaud(BaudRate.B115200);
-			stream.setParity(Parity.NONE);
-			stream.setDataBits(DataBits.EIGHT);
-			stream.setStopBits(StopBits.ONE);
-			stream.setUseFlowControl(FlowControl.NO);
-			stream.setReadMode(1, 10);
-			
-			byte[] out = new String("\n").getBytes();
-			stream.write(out);
-
-			Thread.sleep(100);
-			byte[] in = new byte[1024];
-			stream.read(in);
-			
-			System.out.println(new String(in));			
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
 	public IOStream(String deviceName) throws IOException
 	{
 		if (stream != 0)
