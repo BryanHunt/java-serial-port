@@ -21,6 +21,7 @@ public class IOStream implements Closeable
 			stream.setDataBits(DataBits.EIGHT);
 			stream.setStopBits(StopBits.ONE);
 			stream.setUseFlowControl(FlowControl.NO);
+			stream.setReadMode(1, 10);
 			
 			byte[] out = new String("\n").getBytes();
 			stream.write(out);
@@ -101,6 +102,12 @@ public class IOStream implements Closeable
 		setUseFlowControl(stream, mode.getFlowControl());
 	}
 
+	public void setReadMode(int numberBytesToWaitFor, int timeoutBetweenBytes) throws IOException
+	{
+		checkStream();
+		setReadMode(stream, numberBytesToWaitFor, timeoutBetweenBytes);
+	}
+	
 	public int getStatus() throws IOException
 	{
 		checkStream();
@@ -130,6 +137,8 @@ public class IOStream implements Closeable
 	private native void setStopBits(long stream, int numberStopBits);
 	
 	private native void setUseFlowControl(long stream, boolean mode);
+	
+	private native void setReadMode(long stream, int numberBytesToWaitFor, int timeoutBetweenBytes);
 	
 	private native int getStatus(long stream);
 }

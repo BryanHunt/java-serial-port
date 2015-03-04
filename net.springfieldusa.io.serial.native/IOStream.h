@@ -29,6 +29,7 @@ class IOStream
   int setDataBits(int numberDataBits);
   int setStopBits(int numberStopBits);
   int setUseFlowControl(bool mode);
+  int setReadMode(int numberBytesToWaitFor, int timeoutBetweenBytes);
   
   int getFileDescriptor() { return fileDescriptor; }
   int getStatus();

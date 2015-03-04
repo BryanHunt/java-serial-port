@@ -81,6 +81,14 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setUseFlowCont
 
 /*
  * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    setReadMode
+ * Signature: (JII)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setReadMode
+  (JNIEnv *, jobject, jlong, jint, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
  * Method:    getStatus
  * Signature: (J)I
  */

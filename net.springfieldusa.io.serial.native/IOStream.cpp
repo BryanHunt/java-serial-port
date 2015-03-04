@@ -121,6 +121,13 @@ int IOStream::setUseFlowControl(bool mode)
   return ::tcsetattr(fileDescriptor, TCSANOW, &terminalConfig);
 }
 
+int IOStream::setReadMode(int numberBytesToWaitFor, int timeoutBetweenBytes)
+{
+  terminalConfig.c_cc[VMIN] = numberBytesToWaitFor;
+  terminalConfig.c_cc[VTIME] = timeoutBetweenBytes;
+  return ::tcsetattr(fileDescriptor, TCSANOW, &terminalConfig);
+}
+
 int IOStream::getStatus()
 {
   int status;
@@ -241,6 +248,17 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setUseFlowCont
   {
     jclass exception = env->FindClass("java/io/IOException");
     env->ThrowNew(exception, "Failed to set flow control");
+  }
+}
+
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setReadMode(JNIEnv* env, jobject object, jlong pStream, jint numberBytesToWaitFor, jint timeoutBetweenBytes)
+{
+  IOStream* stream = (IOStream*) pStream;
+  
+  if(stream->setReadMode(numberBytesToWaitFor, timeoutBetweenBytes) < 0)
+  {
+    jclass exception = env->FindClass("java/io/IOException");
+    env->ThrowNew(exception, "Failed to set read mode");
   }
 }
 
