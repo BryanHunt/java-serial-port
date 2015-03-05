@@ -2,6 +2,11 @@ package net.springfieldusa.io.serial;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import net.springfieldusa.io.serial.stream.SerialInputStream;
+import net.springfieldusa.io.serial.stream.SerialOutputStream;
 
 public class IOStream implements Closeable
 {
@@ -20,6 +25,18 @@ public class IOStream implements Closeable
 		stream = open(deviceName);
 	}
 
+	public InputStream createInputStream() throws IOException
+	{
+		checkStream();
+		return new SerialInputStream(this);
+	}
+	
+	public OutputStream createOuputStream() throws IOException
+	{
+		checkStream();
+		return new SerialOutputStream(this);
+	}
+	
 	public int read(byte[] buffer) throws IOException
 	{
 		checkStream();
