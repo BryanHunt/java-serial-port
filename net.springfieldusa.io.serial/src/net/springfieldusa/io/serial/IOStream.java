@@ -49,6 +49,12 @@ public class IOStream implements Closeable
 		return write(stream, buffer);
 	}
 
+	public void flush(FlushMode mode) throws IOException
+	{
+		checkStream();
+		flush(stream, mode.ordinal());
+	}
+	
 	@Override
 	public void close() throws IOException
 	{
@@ -105,6 +111,11 @@ public class IOStream implements Closeable
 		return getStatus(stream);
 	}
 	
+	public void dumpConfig() throws IOException
+	{
+		checkStream();
+		dumpConfig(stream);
+	}
 	private void checkStream() throws IOException
 	{
 		if (stream == 0)
@@ -119,6 +130,8 @@ public class IOStream implements Closeable
 
 	private native void close(long stream) throws IOException;
 
+	private native void flush(long stream, int mode) throws IOException;
+	
 	private native void setBaud(long stream, int baudRate);
 	
 	private native void setParity(long stream, int parity);
@@ -132,4 +145,6 @@ public class IOStream implements Closeable
 	private native void setReadMode(long stream, int numberBytesToWaitFor, int timeoutBetweenBytes);
 	
 	private native int getStatus(long stream);
+	
+	private native void dumpConfig(long stream);
 }

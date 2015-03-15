@@ -41,6 +41,14 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_close
 
 /*
  * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    flush
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_flush
+  (JNIEnv *, jobject, jlong, jint);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
  * Method:    setBaud
  * Signature: (JI)V
  */
@@ -93,6 +101,14 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setReadMode
  * Signature: (J)I
  */
 JNIEXPORT jint JNICALL Java_net_springfieldusa_io_serial_IOStream_getStatus
+  (JNIEnv *, jobject, jlong);
+
+/*
+ * Class:     net_springfieldusa_io_serial_IOStream
+ * Method:    dumpConfig
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_dumpConfig
   (JNIEnv *, jobject, jlong);
 
 #ifdef __cplusplus

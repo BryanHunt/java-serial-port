@@ -20,23 +20,27 @@
 IOStream::IOStream(const char* device)
 {
   fileDescriptor = ::open(device, O_RDWR | O_NOCTTY | O_NONBLOCK);
-  fcntl(fileDescriptor, F_SETFL, 0);
+  ::ioctl(fileDescriptor, TIOCEXCL);
+  ::fcntl(fileDescriptor, F_SETFL, 0);
+
+  ::memset(&terminalConfig, 0, sizeof(terminalConfig));
+  ::tcgetattr(fileDescriptor, &originalTerminalConfig);
+  ::cfmakeraw(&terminalConfig);
   
-  tcgetattr(fileDescriptor, &originalTerminalConfig);
-  cfmakeraw(&terminalConfig);
-  
-  terminalConfig.c_cc[VMIN] = 1;
+  terminalConfig.c_cc[VMIN] = 0;
   terminalConfig.c_cc[VTIME] = 10;
   terminalConfig.c_cflag |= CLOCAL | CREAD | CS8;
   terminalConfig.c_cflag &= ~(PARENB | PARODD | CSTOPB);
   
   ::tcsetattr(fileDescriptor, TCSANOW, &terminalConfig);
+  ::tcflush(fileDescriptor, TCIOFLUSH);
 }
 
 IOStream::~IOStream()
 {
-  ::close(fileDescriptor);
+  ::tcdrain(fileDescriptor);
   ::tcsetattr(fileDescriptor, TCSANOW, &originalTerminalConfig);
+  ::close(fileDescriptor);
 }
 
 ssize_t IOStream::read(void* buffer, size_t nbyte)
@@ -47,6 +51,11 @@ ssize_t IOStream::read(void* buffer, size_t nbyte)
 ssize_t IOStream::write(void* buffer, size_t nbyte)
 {
   return ::write(fileDescriptor, buffer, nbyte);
+}
+
+int IOStream::flush(int flushMode)
+{
+  return ::tcflush(fileDescriptor, flushMode);
 }
 
 int IOStream::setBaud(int baud)
@@ -114,9 +123,9 @@ int IOStream::setStopBits(int numberStopBits)
 int IOStream::setUseFlowControl(bool mode)
 {
   if(mode)
-    terminalConfig.c_cflag &= ~CLOCAL;
+    terminalConfig.c_cflag |= CRTSCTS;
   else
-    terminalConfig.c_cflag |= CLOCAL;
+    terminalConfig.c_cflag &= ~CRTSCTS;
   
   return ::tcsetattr(fileDescriptor, TCSANOW, &terminalConfig);
 }
@@ -134,6 +143,177 @@ int IOStream::getStatus()
   ::ioctl(fileDescriptor, TIOCMGET, &status);
   return status;
 }
+
+void IOStream::dumpConfig()
+{
+  ::printf("\n--------------------------------------------------------------------------------------------------------");
+  ::printf("\n  c_ispeed : %ld", terminalConfig.c_ispeed);
+  ::printf("\n  c_ospeed : %ld", terminalConfig.c_ospeed);
+  
+  ::printf("\n  c_cflag  : %016lx =>", terminalConfig.c_cflag);
+  
+  if((terminalConfig.c_cflag & CSIZE) == CS5)
+    ::printf(" CS5");
+  
+  if((terminalConfig.c_cflag & CSIZE) == CS6)
+    ::printf(" CS6");
+  
+  if((terminalConfig.c_cflag & CSIZE ) == CS7)
+    ::printf(" CS7");
+  
+  if((terminalConfig.c_cflag & CSIZE) == CS8)
+    ::printf(" CS8");
+  
+  if(terminalConfig.c_cflag & CSTOPB)
+    ::printf(" CSTOPB");
+  
+  if(terminalConfig.c_cflag & CREAD)
+    ::printf(" CREAD");
+  
+  if(terminalConfig.c_cflag & PARENB)
+    ::printf(" PARENB");
+  
+  if(terminalConfig.c_cflag & PARODD)
+    ::printf(" PARODD");
+  
+  if(terminalConfig.c_cflag & HUPCL)
+    ::printf(" HUPCL");
+  
+  if(terminalConfig.c_cflag & CLOCAL)
+    ::printf(" CLOCAL");
+  
+  if(terminalConfig.c_cflag & CRTSCTS)
+    ::printf(" CRTSCTS");
+  
+  if(terminalConfig.c_cflag & CRTS_IFLOW)
+    ::printf(" CRTS_IFLOW");
+  
+  if(terminalConfig.c_cflag & MDMBUF)
+    ::printf(" MDMBUF");
+  
+  ::printf("\n  c_iflag  : %016lx =>", terminalConfig.c_iflag);
+  
+  if(terminalConfig.c_iflag & IGNBRK)
+    ::printf(" IGNBRK");
+  
+  if(terminalConfig.c_iflag & BRKINT)
+    ::printf(" BRKINT");
+  
+  if(terminalConfig.c_iflag & IGNPAR)
+    ::printf(" IGNPAR");
+  
+  if(terminalConfig.c_iflag & PARMRK)
+    ::printf(" PARMRK");
+  
+  if(terminalConfig.c_iflag & INPCK)
+    ::printf(" INPCK");
+  
+  if(terminalConfig.c_iflag & ISTRIP)
+    ::printf(" ISTRIP");
+  
+  if(terminalConfig.c_iflag & INLCR)
+    ::printf(" INLCR");
+  
+  if(terminalConfig.c_iflag & IGNCR)
+    ::printf(" IGNCR");
+  
+  if(terminalConfig.c_iflag & ICRNL)
+    ::printf(" ICRNL");
+  
+  if(terminalConfig.c_iflag & IXON)
+    ::printf(" IXON");
+  
+  if(terminalConfig.c_iflag & IXOFF)
+    ::printf(" IXOFF");
+  
+  if(terminalConfig.c_iflag & IXANY)
+    ::printf(" IXANY");
+  
+  if(terminalConfig.c_iflag & IMAXBEL)
+    ::printf(" IMAXBEL");
+  
+  ::printf("\n  c_oflag  : %016lx =>", terminalConfig.c_oflag);
+  
+  if(terminalConfig.c_oflag & OPOST)
+    ::printf(" OPOST");
+  
+  if(terminalConfig.c_oflag & ONLCR)
+    ::printf(" ONLCR");
+  
+  if(terminalConfig.c_oflag & OXTABS)
+    ::printf(" OXTABS");
+  
+  if(terminalConfig.c_oflag & ONOEOT)
+    ::printf(" ONOEOT");
+  
+  if(terminalConfig.c_oflag & OCRNL)
+    ::printf(" OCRNL");
+  
+  if(terminalConfig.c_oflag & ONOCR)
+    ::printf(" ONOCR");
+  
+  if(terminalConfig.c_oflag & ONLRET)
+    ::printf(" ONLRET");
+  
+  ::printf("\n  c_lflag  : %016lx =>", terminalConfig.c_lflag);
+  
+  if(terminalConfig.c_lflag & ECHOKE)
+    ::printf(" ECHOKE");
+  
+  if(terminalConfig.c_lflag & ECHOE)
+    ::printf(" ECHOE");
+  
+  if(terminalConfig.c_lflag & ECHO)
+    ::printf(" ECHO");
+  
+  if(terminalConfig.c_lflag & ECHONL)
+    ::printf(" ECHONL");
+  
+  if(terminalConfig.c_lflag & ECHOPRT)
+    ::printf(" ECHOPRT");
+  
+  if(terminalConfig.c_lflag & ECHOCTL)
+    ::printf(" ECHOCTL");
+  
+  if(terminalConfig.c_lflag & ISIG)
+    ::printf(" ISIG");
+  
+  if(terminalConfig.c_lflag & ICANON)
+    ::printf(" ICANON");
+  
+  if(terminalConfig.c_lflag & ALTWERASE)
+    ::printf(" ALTWERASE");
+  
+  if(terminalConfig.c_lflag & IEXTEN)
+    ::printf(" IEXTEN");
+  
+  if(terminalConfig.c_lflag & EXTPROC)
+    ::printf(" EXTPROC");
+  
+  if(terminalConfig.c_lflag & TOSTOP)
+    ::printf(" TOSTOP");
+  
+  if(terminalConfig.c_lflag & FLUSHO)
+    ::printf(" FLUSHO");
+  
+  if(terminalConfig.c_lflag & NOKERNINFO)
+    ::printf(" NOKERNINFO");
+  
+  if(terminalConfig.c_lflag & PENDIN)
+    ::printf(" PENDIN");
+  
+  if(terminalConfig.c_lflag & NOFLSH)
+    ::printf(" NOFLSH");
+  
+  ::printf("\n--------------------------------------------------------------------------------------------------------\n");
+  ::fflush(stdout);
+}
+
+//-----------------------------------------------------------------------------------------------------------------------
+//
+//  JNI
+//
+//-----------------------------------------------------------------------------------------------------------------------
 
 JNIEXPORT jlong JNICALL Java_net_springfieldusa_io_serial_IOStream_open(JNIEnv* env, jobject object, jstring deviceName)
 {
@@ -194,6 +374,37 @@ JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_close(JNIEnv* 
 {
   IOStream* stream = (IOStream*) pStream;
   delete stream;
+}
+
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_flush(JNIEnv* env, jobject object, jlong pStream, jint flushMode)
+{
+  IOStream* stream = (IOStream*) pStream;
+  int nativeFlushMode;
+  
+  switch(flushMode)
+  {
+    case 0:
+      nativeFlushMode = TCIFLUSH;
+      break;
+      
+    case 1:
+      nativeFlushMode = TCOFLUSH;
+      break;
+      
+    case 2:
+      nativeFlushMode = TCIOFLUSH;
+      break;
+      
+    default:
+      jclass exception = env->FindClass("java/io/IOException");
+      env->ThrowNew(exception, "Unknown flush mode");
+  }
+  
+  if(stream->flush(nativeFlushMode) != 0)
+  {
+    jclass exception = env->FindClass("java/io/IOException");
+    env->ThrowNew(exception, "Flush failed");
+  }
 }
 
 JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_setBaud(JNIEnv* env, jobject object, jlong pStream, jint baudRate)
@@ -267,3 +478,10 @@ JNIEXPORT jint JNICALL Java_net_springfieldusa_io_serial_IOStream_getStatus(JNIE
   IOStream* stream = (IOStream*) pStream;
   return stream->getStatus();
 }
+
+JNIEXPORT void JNICALL Java_net_springfieldusa_io_serial_IOStream_dumpConfig(JNIEnv* env, jobject object, jlong pStream)
+{
+  IOStream* stream = (IOStream*) pStream;
+  stream->dumpConfig();
+}
+

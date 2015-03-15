@@ -21,8 +21,12 @@ class IOStream
   public:
 
   IOStream(const char* device);
+  virtual ~IOStream();
+
   ssize_t read(void* buffer, size_t nbyte);
   ssize_t write(void* buffer, size_t nbyte);
+  
+  int flush(int flushMode);
   
   int setBaud(int baud);
   int setParity(int parity);
@@ -33,7 +37,7 @@ class IOStream
   
   int getFileDescriptor() { return fileDescriptor; }
   int getStatus();
-  virtual ~IOStream();
+  void dumpConfig();
 };
 
 #endif /* IOSTREAM_H_ */
