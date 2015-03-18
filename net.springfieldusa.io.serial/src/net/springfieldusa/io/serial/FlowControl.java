@@ -16,6 +16,7 @@ package net.springfieldusa.io.serial;
  * The values of the flow control mode that can be set on the serial port.
  * 
  * @author bhunt
+ * @since 1.0
  *
  */
 public enum FlowControl

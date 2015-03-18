@@ -23,13 +23,13 @@ import net.springfieldusa.io.serial.stream.SerialOutputStream;
 /**
  * This class provides an interface to a native serial IO port.  You may configure
  * the serial port with typical settings: baud rate, parity, data bits, stop bits,
- * and flow control.  This class also provides wrappers to the standard Java
- * @see java.io.InputStream and @see java.io.OutputStream.
- * 
+ * and flow control.  This class also provides wrappers to the standard
+ * java.io.InputStream and java.io.OutputStream.
+ * <p>
  * Example usage setting the serial port to 9600 baud and N81:
- * 
+ *
  * <pre>
- * {@code
+ * <code>
  * IOStream stream = new IOStream("/dev/cu.udbserial");
  * stream.setBaud(BaudRate.B9600);
  * stream.setDataBits(DataBits.EIGHT);
@@ -37,11 +37,11 @@ import net.springfieldusa.io.serial.stream.SerialOutputStream;
  * stream.setStopBits(StopBits.ONE);
  * stream.setUseFlowControl(FlowControl.NO);
  * stream.setReadMode(1, 10);
- *
- * }
+ * </code>
  * </pre>
  * 
  * @author bhunt
+ * @since 1.0
  *
  */
 public class IOStream implements Closeable
@@ -68,7 +68,7 @@ public class IOStream implements Closeable
 	}
 
 	/**
-	 * Creates an @see java.io.InputStream wrapper around the IOStream.
+	 * Creates a java.io.InputStream wrapper around the IOStream.
 	 * Calling close on the input stream will NOT close the IOStream.
 	 * 
 	 * @return the input stream wraper
@@ -81,7 +81,7 @@ public class IOStream implements Closeable
 	}
 	
 	/**
-	 * Creates an @see java.io.OutputStream wrapper around the IOStream.
+	 * Creates a java.io.OutputStream wrapper around the IOStream.
 	 * Calling close on the output stream will NOT close the IOStream.
 	 * 
 	 * @return the output stream wrapper
@@ -213,16 +213,17 @@ public class IOStream implements Closeable
 	/**
 	 * Sets the read mode based on the termios man page where MIN is the 
 	 * numberBytesToWaitFor and TIME is the timeoutBetweenBytes
-	 * 
+	 * <p>
 	 * From man termios:
-	 * 
+	 * <p>
 	 *   MIN represents the minimum number of bytes that should be received when the read
    *   function successfully returns.  TIME is a timer of 0.1 second granularity that is
    *   used to time out bursty and short term data transmissions.  If MIN is greater than {
    *   MAX_INPUT}, the response to the request is undefined.  The four possible values for
    *   MIN and TIME and their interactions are described below.
-   * 
-   * Case A: MIN > 0, TIME > 0
+   * <p>
+   * Case A: MIN &gt; 0, TIME &gt; 0
+   * <p>
    *   In this case TIME serves as an inter-byte timer and is activated after the first byte
    *   is received.  Since it is an inter-byte timer, it is reset after a byte is received.
    *   The interaction between MIN and TIME is as follows:  as soon as one byte is received,
@@ -231,19 +232,21 @@ public class IOStream implements Closeable
    *   is satisfied.  If the timer expires before MIN bytes are received, the characters
    *   received to that point are returned to the user.  Note that if TIME expires at least
    *   one byte is returned because the timer would not have been enabled unless a byte was
-   *   received.  In this case (MIN > 0, TIME > 0) the read blocks until the MIN and TIME
+   *   received.  In this case (MIN &gt; 0, TIME &gt; 0) the read blocks until the MIN and TIME
    *   mechanisms are activated by the receipt of the first byte, or a signal is received.
    *   If data is in the buffer at the time of the read(), the result is as if data had been
    *   received immediately after the read().
-   * 
-   * Case B: MIN > 0, TIME = 0
+   * <p>
+   * Case B: MIN &gt; 0, TIME = 0
+   * <p>
    *   In this case, since the value of TIME is zero, the timer plays no role and only MIN
    *   is significant.  A pending read is not satisfied until MIN bytes are received (i.e.,
    *   the pending read blocks until MIN bytes are received), or a signal is received.  A
    *   program that uses this case to read record-based terminal I/O may block indefinitely
    *   in the read operation.
-   * 
-   * Case C: MIN = 0, TIME > 0
+   * <p>
+   * Case C: MIN = 0, TIME &gt; 0
+   * <p>
    *   In this case, since MIN = 0, TIME no longer represents an inter-byte timer.  It now
    *   serves as a read timer that is activated as soon as the read function is processed.
    *   A read is satisfied as soon as a single byte is received or the read timer expires.
@@ -253,8 +256,9 @@ public class IOStream implements Closeable
    *   received within TIME*0.1 seconds after the read is initiated, the read returns a
    *   value of zero, having read no data.  If data is in the buffer at the time of the
    *   read, the timer is started as if data had been received immediately after the read.
-   * 
+   * <p>
    * Case D: MIN = 0, TIME = 0
+   * <p>
    *   The minimum of either the number of bytes requested or the number of bytes currently
    *   available is returned without waiting for more bytes to be input.  If no characters
    *   are available, read returns a value of zero, having read no data.

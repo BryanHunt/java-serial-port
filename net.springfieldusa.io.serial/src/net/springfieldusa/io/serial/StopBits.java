@@ -16,6 +16,7 @@ package net.springfieldusa.io.serial;
  * The values of stop bits that can be set on the serial port.
  * 
  * @author bhunt
+ * @since 1.0
  *
  */
 public enum StopBits
