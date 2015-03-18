@@ -12,6 +12,12 @@
 
 package net.springfieldusa.io.serial;
 
+/**
+ * The number of data bits that can be set on the serial port.
+ * 
+ * @author bhunt
+ *
+ */
 public enum DataBits
 {
 	FIVE(5), SIX(6), SEVEN(7), EIGHT(8);

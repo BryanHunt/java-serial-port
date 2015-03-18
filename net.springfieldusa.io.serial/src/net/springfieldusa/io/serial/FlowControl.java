@@ -12,6 +12,12 @@
 
 package net.springfieldusa.io.serial;
 
+/**
+ * The values of the flow control mode that can be set on the serial port.
+ * 
+ * @author bhunt
+ *
+ */
 public enum FlowControl
 {
 	YES(true), NO(false);

@@ -12,6 +12,12 @@
 
 package net.springfieldusa.io.serial;
 
+/**
+ * The baud rate values that may be selected for the serial port.
+ * 
+ * @author bhunt
+ *
+ */
 public enum BaudRate
 {
 	B0(0),

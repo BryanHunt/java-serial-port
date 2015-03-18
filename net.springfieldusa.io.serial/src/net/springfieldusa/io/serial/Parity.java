@@ -12,6 +12,12 @@
 
 package net.springfieldusa.io.serial;
 
+/**
+ * The values of parity that can be set on the serial port.
+ * 
+ * @author bhunt
+ *
+ */
 public enum Parity
 {
 	NONE(0), EVEN(2), ODD(1);

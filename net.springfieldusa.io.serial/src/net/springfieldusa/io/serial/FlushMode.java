@@ -12,6 +12,12 @@
 
 package net.springfieldusa.io.serial;
 
+/**
+ * The flush mode that can be used when flushing the serial port.
+ * 
+ * @author bhunt
+ *
+ */
 public enum FlushMode
 {
 	INPUT, OUTPUT, BOTH;	
