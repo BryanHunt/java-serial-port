@@ -12,7 +12,7 @@ If you would like to see other platforms supported, contributions are welcome.
 
 ### Installing
 
-* Instructions for OSGi coming soon
+* Bndtools repository: http://bryanhunt.github.com/java-serial-port/releases/0.1.0/index.xml.gz
 
 ### Donating
 
