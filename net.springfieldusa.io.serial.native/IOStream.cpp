@@ -190,12 +190,6 @@ void IOStream::dumpConfig()
   if(terminalConfig.c_cflag & CRTSCTS)
     ::printf(" CRTSCTS");
   
-  if(terminalConfig.c_cflag & CRTS_IFLOW)
-    ::printf(" CRTS_IFLOW");
-  
-  if(terminalConfig.c_cflag & MDMBUF)
-    ::printf(" MDMBUF");
-  
   ::printf("\n  c_iflag  : %016lx =>", terminalConfig.c_iflag);
   
   if(terminalConfig.c_iflag & IGNBRK)
@@ -245,12 +239,6 @@ void IOStream::dumpConfig()
   if(terminalConfig.c_oflag & ONLCR)
     ::printf(" ONLCR");
   
-  if(terminalConfig.c_oflag & OXTABS)
-    ::printf(" OXTABS");
-  
-  if(terminalConfig.c_oflag & ONOEOT)
-    ::printf(" ONOEOT");
-  
   if(terminalConfig.c_oflag & OCRNL)
     ::printf(" OCRNL");
   
@@ -286,9 +274,6 @@ void IOStream::dumpConfig()
   if(terminalConfig.c_lflag & ICANON)
     ::printf(" ICANON");
   
-  if(terminalConfig.c_lflag & ALTWERASE)
-    ::printf(" ALTWERASE");
-  
   if(terminalConfig.c_lflag & IEXTEN)
     ::printf(" IEXTEN");
   
@@ -300,9 +285,6 @@ void IOStream::dumpConfig()
   
   if(terminalConfig.c_lflag & FLUSHO)
     ::printf(" FLUSHO");
-  
-  if(terminalConfig.c_lflag & NOKERNINFO)
-    ::printf(" NOKERNINFO");
   
   if(terminalConfig.c_lflag & PENDIN)
     ::printf(" PENDIN");
