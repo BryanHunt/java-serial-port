@@ -1,102 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1428100408001" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1488564522000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="net.springfieldusa.io.serial"/>
+      <attribute name="osgi.identity" value="net.springfieldusa.io.serial.test"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="0.1.0.201503180539"/>
+      <attribute name="version" type="Version" value="1.0.0.201703031808"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="3f522f08103d7a348a26f5ff14f480f67e0d217ba42746d3341b922c93dfc95e"/>
-      <attribute name="url" value="net.springfieldusa.io.serial/net.springfieldusa.io.serial-0.1.0.jar"/>
-      <attribute name="size" type="Long" value="26128"/>
+      <attribute name="osgi.content" value="ccb60f873e320517a4e549f9ed97a8a182c39284e846d36f93ad63920bbecacb"/>
+      <attribute name="url" value="net.springfieldusa.io.serial.test/net.springfieldusa.io.serial.test-1.0.0.jar"/>
+      <attribute name="size" type="Long" value="3733"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.1.0.201503180539"/>
+      <attribute name="osgi.wiring.bundle" value="net.springfieldusa.io.serial.test"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201703031808"/>
     </capability>
     <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.1.0.201503180539"/>
+      <attribute name="osgi.wiring.host" value="net.springfieldusa.io.serial.test"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201703031808"/>
     </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="net.springfieldusa.io.serial"/>
-      <attribute name="version" type="Version" value="0.1.0"/>
-      <attribute name="bundle-symbolic-name" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.1.0.201503180539"/>
-    </capability>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=net.springfieldusa.io.serial)(version&gt;=0.5.0)(!(version&gt;=1.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-    <requirement namespace="osgi.native">
-      <directive name="filter" value="(&amp;(osgi.native.osname~=macosx)(osgi.native.processor~=x86_64))"/>
     </requirement>
   </resource>
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="net.springfieldusa.io.serial"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="0.2.0.201504030211"/>
+      <attribute name="version" type="Version" value="0.5.0.201703031808"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="009d50f732fda36c34f18a657264aae4eaa26c7e638e36cec952d150762a489d"/>
-      <attribute name="url" value="net.springfieldusa.io.serial/net.springfieldusa.io.serial-0.2.0.jar"/>
-      <attribute name="size" type="Long" value="34559"/>
+      <attribute name="osgi.content" value="3bf9b615cb0453635260dedd2423eeb900827845530036ecbeb366eb5b0ef9cc"/>
+      <attribute name="url" value="net.springfieldusa.io.serial/net.springfieldusa.io.serial-0.5.0.jar"/>
+      <attribute name="size" type="Long" value="47200"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.2.0.201504030211"/>
+      <attribute name="bundle-version" type="Version" value="0.5.0.201703031808"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.2.0.201504030211"/>
+      <attribute name="bundle-version" type="Version" value="0.5.0.201703031808"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="net.springfieldusa.io.serial"/>
-      <attribute name="version" type="Version" value="0.1.0"/>
+      <attribute name="version" type="Version" value="0.5.0"/>
       <attribute name="bundle-symbolic-name" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.2.0.201504030211"/>
+      <attribute name="bundle-version" type="Version" value="0.5.0.201703031808"/>
     </capability>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-    <requirement namespace="osgi.native">
-      <directive name="filter" value="(|(&amp;(osgi.native.osname~=macosx)(osgi.native.processor~=x86_64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=x86_64)))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="net.springfieldusa.io.serial"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="0.3.0.201504032233"/>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="net.springfieldusa.io.serial.SerialPortService"/>
     </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="2cf82e7ef40e24b7142023feaeae2cefd13c246aba2e2a92f7121aef7624b651"/>
-      <attribute name="url" value="net.springfieldusa.io.serial/net.springfieldusa.io.serial-0.3.0.jar"/>
-      <attribute name="size" type="Long" value="41905"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.3.0.201504032233"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.3.0.201504032233"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="net.springfieldusa.io.serial"/>
-      <attribute name="version" type="Version" value="0.1.0"/>
-      <attribute name="bundle-symbolic-name" value="net.springfieldusa.io.serial"/>
-      <attribute name="bundle-version" type="Version" value="0.3.0.201504032233"/>
+    <capability namespace="osgi.service">
+      <attribute name="objectClass" type="List&lt;String&gt;" value="net.springfieldusa.io.serial.SerialPortService"/>
+      <directive name="uses" value="net.springfieldusa.io.serial"/>
     </capability>
     <requirement namespace="osgi.ee">
       <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
     </requirement>
     <requirement namespace="osgi.native">
       <directive name="filter" value="(|(&amp;(osgi.native.osname~=macosx)(osgi.native.processor~=x86_64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=x86_64))(&amp;(osgi.native.osname~=linux)(osgi.native.processor~=arm)))"/>
+    </requirement>
+    <requirement namespace="osgi.extender">
+      <directive name="filter" value="(&amp;(osgi.extender=osgi.component)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="effective" value="active"/>
     </requirement>
   </resource>
 </repository>

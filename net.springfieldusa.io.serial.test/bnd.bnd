@@ -1,0 +1,6 @@
+Bundle-Version: 1.0.0.${tstamp}
+-buildpath: \
+	osgi.core;version=5.0,\
+	net.springfieldusa.io.serial;version=latest
+Private-Package: net.springfieldusa.io.serial.test
+Bundle-Activator: net.springfieldusa.io.serial.test.Activator

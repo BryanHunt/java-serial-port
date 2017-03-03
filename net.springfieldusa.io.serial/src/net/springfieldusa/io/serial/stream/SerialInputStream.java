@@ -27,16 +27,10 @@ public class SerialInputStream extends InputStream
 	}
 	
 	@Override
-	public int read(byte[] b) throws IOException
-	{
-		return stream.read(b);
-	}
-
-	@Override
 	public int read() throws IOException
 	{
 		byte[] buffer = new byte[1];
-		stream.read(buffer);
-		return buffer[0];
+		int length = stream.read(buffer);
+		return length == 1 ? buffer[0] : -1;
 	}
 }

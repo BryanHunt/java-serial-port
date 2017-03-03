@@ -1,5 +1,9 @@
-Bundle-Version: 0.3.0.${tstamp}
+Bundle-Version: 0.5.0.${tstamp}
 Export-Package: net.springfieldusa.io.serial
 Bundle-NativeCode: lib/osx/libio.serial.native.dylib; osname=macosx; processor=x86_64,lib/linux/x86_64/libio.serial.native.so; osname=linux; processor=x86_64,lib/linux/arm/libio.serial.native.so; osname=linux; processor=arm
 Include-Resource: lib=lib
-Private-Package: net.springfieldusa.io.serial.stream
+Private-Package: \
+	net.springfieldusa.io.serial.stream,\
+	net.springfieldusa.io.serial.impl
+-buildpath: osgi.cmpn;version=5.0
+-dsannotations: *
