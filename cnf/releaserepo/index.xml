@@ -2,36 +2,6 @@
 <repository increment="1488564522000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="net.springfieldusa.io.serial.test"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201703031808"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="ccb60f873e320517a4e549f9ed97a8a182c39284e846d36f93ad63920bbecacb"/>
-      <attribute name="url" value="net.springfieldusa.io.serial.test/net.springfieldusa.io.serial.test-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="3733"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="net.springfieldusa.io.serial.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201703031808"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="net.springfieldusa.io.serial.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201703031808"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=net.springfieldusa.io.serial)(version&gt;=0.5.0)(!(version&gt;=1.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.7.0)(!(version&gt;=2.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.ee">
-      <directive name="filter" value="(&amp;(osgi.ee=JavaSE)(version=1.8))"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="net.springfieldusa.io.serial"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="0.5.0.201703031808"/>
